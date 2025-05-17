@@ -24,6 +24,7 @@ This messaging system allows users to send WhatsApp messages through a simple AP
 - Node.js (version 14 or higher)
 - SQL Server
 - Access to WallMessage API (API keys)
+- [Wall Message API Documentation](https://documenter.getpostman.com/view/9885573/2sB2cUBicg#6f0dccc8-74bd-4e90-9f95-cf0cd4dfdb7a)
 
 ## Installation and Setup
 
@@ -109,6 +110,10 @@ POST /send-whatsapp
   "message": "Error message"
 }
 ```
+
+### Wall Message API Documentation
+
+For more information about the Wall Message APIs used in this project, please refer to the [official Wall Message documentation](https://documenter.getpostman.com/view/9885573/2sB2cUBicg#6f0dccc8-74bd-4e90-9f95-cf0cd4dfdb7a). This documentation includes comprehensive information about using various Wall Message APIs, including sending messages, retrieving group lists, and managing group members.
 
 ## Database
 
