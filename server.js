@@ -2,8 +2,8 @@ const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
 const fs = require("fs");
-const { poolPromise, sql } = require("./config/db");
-const { createUsersTable: initTable } = require("./config/initDb");
+const { poolPromise, sql } = require("./src/config/db");
+const { createUsersTable: initTable } = require("./src/config/initDb");
 
 const app = express();
 
