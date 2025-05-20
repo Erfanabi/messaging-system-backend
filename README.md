@@ -77,8 +77,8 @@ The server will be available at `http://localhost:3000`.
 ```
 
 ## APIs
-
 ### Send WhatsApp Message
+
 
 ```
 POST /send-whatsapp
@@ -111,6 +111,51 @@ POST /send-whatsapp
 }
 ```
 
+### Save Hotel Information
+
+```
+POST /api/save-hotel-info
+```
+
+**Request Parameters:**
+
+```json
+{
+  "name": "Contact Name",
+  "phoneNumber": "+989105003119",
+  "whatsapp": "09105003119",
+  "hotelName": "Hotel Name",
+  "description": "Hotel Description",
+  "positionAddress": "Hotel Address",
+  "items": [
+    {
+      "name": "Item Name",
+      "description": "Item Description"
+    }
+  ]
+}
+```
+
+**Success Response:**
+
+```json
+{
+  "success": true,
+  "message": "اطلاعات هتل و آیتم‌ها با موفقیت ذخیره شدند.",
+  "hotelId": 1
+}
+```
+
+**Error Response:**
+
+```json
+{
+  "success": false,
+  "message": "Error message",
+  "error": "Detailed error message"
+}
+```
+
 ### Wall Message API Documentation
 
 For more information about the Wall Message APIs used in this project, please refer to the [official Wall Message documentation](https://documenter.getpostman.com/view/9885573/2sB2cUBicg#6f0dccc8-74bd-4e90-9f95-cf0cd4dfdb7a). This documentation includes comprehensive information about using various Wall Message APIs, including sending messages, retrieving group lists, and managing group members.
@@ -119,6 +164,7 @@ For more information about the Wall Message APIs used in this project, please re
 
 This project uses SQL Server as the database. The following table is automatically created on the first run of the application:
 
+## Database
 ### Users Table
 
 | Column | Type | Description |
@@ -126,6 +172,29 @@ This project uses SQL Server as the database. The following table is automatical
 | Id | INT | Primary key, auto-increment |
 | Name | NVARCHAR(100) | User name |
 | Phone | NVARCHAR(20) | User phone number |
+| CreatedAt | DATETIME | Record creation time (default: current time) |
+
+### Hotels Table
+
+| Column | Type | Description |
+|--------|------|-------------|
+| Id | INT | Primary key, auto-increment |
+| Name | NVARCHAR(100) | Contact name |
+| PhoneNumber | NVARCHAR(20) | Contact phone number |
+| Whatsapp | NVARCHAR(20) | Contact WhatsApp number |
+| HotelName | NVARCHAR(100) | Hotel name |
+| Description | NVARCHAR(MAX) | Hotel description |
+| PositionAddress | NVARCHAR(200) | Hotel address |
+| CreatedAt | DATETIME | Record creation time (default: current time) |
+
+### Items Table
+
+| Column | Type | Description |
+|--------|------|-------------|
+| Id | INT | Primary key, auto-increment |
+| HotelId | INT | Foreign key to Hotels table |
+| Name | NVARCHAR(100) | Item name |
+| Description | NVARCHAR(MAX) | Item description |
 | CreatedAt | DATETIME | Record creation time (default: current time) |
 
 ## Environment Variables
