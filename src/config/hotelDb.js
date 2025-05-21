@@ -12,8 +12,8 @@ const createHotelsTable = async () => {
           PhoneNumber NVARCHAR(20) NOT NULL,
           Whatsapp NVARCHAR(20) NOT NULL,
           HotelName NVARCHAR(100) NOT NULL,
-          Description NVARCHAR(MAX),
-          PositionAddress NVARCHAR(200),
+          Position NVARCHAR(MAX),
+          Address NVARCHAR(200),
           CreatedAt DATETIME DEFAULT GETDATE()
         );
       END

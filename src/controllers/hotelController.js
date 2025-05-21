@@ -2,15 +2,8 @@ const { poolPromise, sql } = require("../config/db");
 
 // ذخیره اطلاعات هتل و آیتم‌های آن
 async function saveHotelInfo(req, res) {
-  const {
-    name,
-    phoneNumber,
-    whatsapp,
-    hotelName,
-    description,
-    positionAddress,
-    items,
-  } = req.body;
+  const { name, phoneNumber, whatsapp, hotelName, position, address, items } =
+    req.body;
 
   // اعتبارسنجی داده‌های ورودی
   if (!name || !phoneNumber || !whatsapp || !hotelName) {
@@ -35,11 +28,11 @@ async function saveHotelInfo(req, res) {
         .input("phoneNumber", sql.NVarChar, phoneNumber)
         .input("whatsapp", sql.NVarChar, whatsapp)
         .input("hotelName", sql.NVarChar, hotelName)
-        .input("description", sql.NVarChar, description || null)
-        .input("positionAddress", sql.NVarChar, positionAddress || null)
+        .input("position", sql.NVarChar, position || null)
+        .input("address", sql.NVarChar, address || null)
         .query(
-          `INSERT INTO Hotels (Name, PhoneNumber, Whatsapp, HotelName, Description, PositionAddress) 
-           VALUES (@name, @phoneNumber, @whatsapp, @hotelName, @description, @positionAddress); 
+          `INSERT INTO Hotels (Name, PhoneNumber, Whatsapp, HotelName, Position, Address) 
+           VALUES (@name, @phoneNumber, @whatsapp, @hotelName, @position, @address); 
            SELECT SCOPE_IDENTITY() AS HotelId;`,
         );
 

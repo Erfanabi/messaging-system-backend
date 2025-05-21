@@ -8,15 +8,8 @@ const WALLMESSAGE_AUTH_KEY = process.env.WALLMESSAGE_AUTH_KEY;
 
 // Handle saving information to database and sending WhatsApp message
 async function sendWhatsAppAndSaveInfo(req, res) {
-  const {
-    name,
-    phoneNumber,
-    whatsapp,
-    hotelName,
-    description,
-    positionAddress,
-    items,
-  } = req.body;
+  const { name, phoneNumber, whatsapp, hotelName, position, address, items } =
+    req.body;
 
   // Validate input data
   if (!name || !phoneNumber || !whatsapp || !hotelName) {
@@ -45,11 +38,11 @@ async function sendWhatsAppAndSaveInfo(req, res) {
         .input("phoneNumber", sql.NVarChar, phoneNumber)
         .input("whatsapp", sql.NVarChar, whatsapp)
         .input("hotelName", sql.NVarChar, hotelName)
-        .input("description", sql.NVarChar, description || null)
-        .input("positionAddress", sql.NVarChar, positionAddress || null)
+        .input("position", sql.NVarChar, position || null)
+        .input("address", sql.NVarChar, address || null)
         .query(
-          `INSERT INTO Hotels (Name, PhoneNumber, Whatsapp, HotelName, Description, PositionAddress) 
-           VALUES (@name, @phoneNumber, @whatsapp, @hotelName, @description, @positionAddress); 
+          `INSERT INTO Hotels (Name, PhoneNumber, Whatsapp, HotelName, Position, Address) 
+           VALUES (@name, @phoneNumber, @whatsapp, @hotelName, @position, @address); 
            SELECT SCOPE_IDENTITY() AS HotelId;`,
         );
 
