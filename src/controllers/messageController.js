@@ -79,9 +79,21 @@ async function sendWhatsAppAndSaveInfo(req, res) {
         );
       }
 
-      const message = `Hello ${name},
-Your hotel ${hotelName} has been successfully registered.
-https://hotelex.ae/catalog/`;
+//       const message = `Hello ${name},
+// Your hotel ${hotelName} has been successfully registered.
+// https://hotelex.ae/catalog/`;
+
+      const message = `
+      Hi,
+We were so happy to see you at our booth at the Hotel Show!
+Our sales experts will contact you soon to follow up on your request.
+You can also reach us on WhatsApp at this number.
+Riuyan shi
+Hotelex
+
+Hotelex.ae
+Email: Marketing@hotelex.ae
+      `
 
       await sendMessage(formattedPhone, message);
 
